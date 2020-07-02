@@ -1,7 +1,7 @@
 FROM rust:slim
 WORKDIR /app
 
-# COPY ./ ./
-# RUN cargo build
+COPY ./ ./
+RUN cargo build
 
-# CMD cargo run
+CMD cargo run
