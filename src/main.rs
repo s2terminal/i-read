@@ -1,6 +1,8 @@
 use std::process::Command;
 use structopt::StructOpt;
 use regex::Regex;
+use dialoguer::Select;
+use dialoguer::theme::ColorfulTheme;
 
 #[derive(StructOpt)]
 struct Cli {
@@ -9,25 +11,29 @@ struct Cli {
 }
 
 fn main() {
-    println!("Hello, i-read-u!");
-
     let args = Cli::from_args();
     let content = std::fs::read_to_string(&args.filename).expect("No such file or directory");
 
-    // FIXME: 選択可能にする
-    let mut cmd_str = String::from("ls -l -a");
+    let mut commands: Vec<String> = Vec::new();
     let cmd_pattern = Regex::new(r"^\s*[#>$]+\s*").unwrap();
     for line in content.lines() {
         if cmd_pattern.is_match(line) {
-            cmd_str = cmd_pattern.replace(line, "").into_owned();
+            commands.push(cmd_pattern.replace(line, "").into_owned());
         }
     }
 
-    println!("command: {}", cmd_str);
+    let select = Select::with_theme(&ColorfulTheme::default())
+        .with_prompt("choice command")
+        .default(0)
+        .items(&commands)
+        .interact()
+        .unwrap();
+
+    println!("execute command: {}", commands[select]);
 
     let mut result = Command::new("sh")
         .arg("-c")
-        .arg(cmd_str)
+        .arg(commands[select].to_string())
         .spawn()
         .unwrap();
     result.wait();
