@@ -1,7 +1,8 @@
-# I Read You RS
+# I read you RS
+Rust version of ["I read you (ireadu)"](https://github.com/s2terminal/i-read-u).
 
-## Install
-wip
+## Usage
+[Get binary](https://github.com/s2terminal/i-read-rs/suites/877454419/artifacts/10274265).
 
 ## Developing
 
