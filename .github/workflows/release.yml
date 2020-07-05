@@ -12,11 +12,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Setup musl
+      run: rustup target add x86_64-unknown-linux-musl
     - uses: actions/checkout@v2
     - name: Build
-      run: cargo build --release
+      run: cargo build --release --target=x86_64-unknown-linux-musl
     - name: Archive production artifacts
       uses: actions/upload-artifact@v1
       with:
         name: i-read-rs-linux-amd64
-        path: target/release/i-read-rs
+        path: target/x86_64-unknown-linux-musl/release/i-read-rs
