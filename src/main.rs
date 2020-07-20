@@ -5,8 +5,8 @@ mod exec;
 
 fn main() {
     let content = args::get_content();
-    let commands = cmds::get_commands(content);
-    let select = select::select_commands(&commands);
-    println!("execute command: {}", commands[select]);
-    exec::execute(&commands[select]);
+    let commands = cmds::Command::get_commands(content);
+    let command = select::select_commands(&commands);
+    println!("execute command: {}", command);
+    exec::execute(&command.executable());
 }
