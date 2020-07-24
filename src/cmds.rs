@@ -1,3 +1,4 @@
+use pulldown_cmark::{Parser, Tag, Options, Event};
 use regex::Regex;
 use std::fmt;
 
@@ -16,9 +17,19 @@ impl Command {
 
     pub fn get_commands(content: String) -> Vec<Command> {
         let mut commands: Vec<Command> = Vec::new();
-        for line in content.lines() {
-            if Self::pattern().is_match(line) {
-                commands.push(Command { raw_string: String::from(line) })
+        let options = Options::empty();
+        let parser = Parser::new_ext(content.as_str(), options);
+        let mut is_code: bool = false;
+        for event in parser {
+            match event {
+                Event::Start(Tag::CodeBlock(_)) => is_code = true,
+                Event::End(Tag::CodeBlock(_))   => is_code = false,
+                Event::Text(text) => ( if is_code == true {
+                    for line in text.lines() {
+                        commands.push(Command { raw_string: String::from(line) });
+                    }
+                } ),
+                _ => ()
             }
         }
         commands
