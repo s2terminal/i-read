@@ -1,6 +1,9 @@
 # Change Log
 
 ## Unreleased
+- none
+
+## 0.0.7 / 2020-08-08
 - rename from "i-read-rs" to "iread"
 
 ## 0.0.6 / 2020-08-08

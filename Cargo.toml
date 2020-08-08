@@ -1,6 +1,6 @@
 [package]
 name = "i-read"
-version = "0.0.6"
+version = "0.0.7"
 authors = ["s2terminal <suzuki.sh@s2terminal.com>"]
 edition = "2018"
 
