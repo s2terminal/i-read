@@ -21,13 +21,13 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v1
       with:
-        name: i-read-rs-linux-amd64
-        path: target/x86_64-unknown-linux-musl/release/i-read-rs
+        name: i-read-linux-amd64
+        path: target/x86_64-unknown-linux-musl/release/i-read
 
     - name: Compress
       run: |
-        mv target/x86_64-unknown-linux-musl/release/i-read-rs i-read-rs
-        tar --gunzip --create --file i-read-rs.tar.gz i-read-rs
+        mv target/x86_64-unknown-linux-musl/release/i-read iread
+        tar --gunzip --create --file iread.tar.gz iread
 
     - name: Create Release
       id: create_release
@@ -51,6 +51,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: i-read-rs.tar.gz
-        asset_name: i-read-rs.tar.gz
+        asset_path: iread.tar.gz
+        asset_name: iread.tar.gz
         asset_content_type: application/octet-stream

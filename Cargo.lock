@@ -145,7 +145,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "i-read-rs"
+name = "i-read"
 version = "0.0.6"
 dependencies = [
  "console",
