@@ -24,7 +24,7 @@ impl Command {
             match event {
                 Event::Start(Tag::CodeBlock(_)) => is_code = true,
                 Event::End(Tag::CodeBlock(_))   => is_code = false,
-                Event::Text(text) => ( if is_code == true {
+                Event::Text(text) => ( if is_code {
                     for line in text.lines() {
                         commands.push(Command { raw_string: String::from(line) });
                     }
