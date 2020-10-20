@@ -3,6 +3,9 @@
 ## Unreleased
 - none
 
+## 0.0.8 / 2020-10-20
+- include headings
+
 ## 0.0.7 / 2020-08-08
 - rename from "i-read-rs" to "iread"
 
