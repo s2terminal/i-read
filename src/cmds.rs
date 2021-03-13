@@ -2,6 +2,7 @@ use pulldown_cmark::{Parser, Tag, Options, Event};
 use regex::Regex;
 use std::fmt;
 
+#[derive(Debug, Clone)]
 pub struct Command {
     raw_string: String,
     executable: bool
