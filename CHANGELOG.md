@@ -3,6 +3,9 @@
 ## Unreleased
 - none
 
+## 0.0.9 / 2021-03-13
+- use `Cursive`
+
 ## 0.0.8 / 2020-10-20
 - include headings
 
