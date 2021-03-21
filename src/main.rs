@@ -4,7 +4,7 @@ mod exec;
 
 use cursive::traits::*;
 use cursive::views::{Dialog, SelectView,CircularFocus};
-use cursive::theme::{Color, PaletteColor, Theme};
+use cursive::theme::{Color, PaletteColor, Theme, BaseColor};
 use cursive::Cursive;
 
 fn main() {
@@ -48,5 +48,13 @@ fn select_and_exec_command(commands: Vec<cmds::Command>) {
 fn custom_theme_from_cursive(siv: &Cursive) -> Theme {
     let mut theme = siv.current_theme().clone();
     theme.palette[PaletteColor::Background] = Color::TerminalDefault;
+    theme.palette[PaletteColor::Shadow] = Color::TerminalDefault;
+    theme.palette[PaletteColor::View] = Color::TerminalDefault;
+    theme.palette[PaletteColor::Primary] = Color::TerminalDefault;
+    theme.palette[PaletteColor::Tertiary] = Color::TerminalDefault;
+    theme.palette[PaletteColor::TitlePrimary] = Color::TerminalDefault;
+    theme.palette[PaletteColor::Highlight] = Color::Light(BaseColor::White);
+    theme.palette[PaletteColor::HighlightText] = Color::Dark(BaseColor::Blue);
+
     theme
 }
