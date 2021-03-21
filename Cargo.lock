@@ -12,6 +12,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "ahash"
+version = "0.7.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7f200cbb1e856866d9eade941cf3aa0c5d7dd36f74311c4273b494f4ef036957"
+dependencies = [
+ "getrandom",
+ "once_cell",
+ "version_check",
+]
+
+[[package]]
 name = "aho-corasick"
 version = "0.7.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -179,11 +190,10 @@ dependencies = [
 
 [[package]]
 name = "cursive"
-version = "0.16.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6593c3409eb794bf22090bec60dda1e19d1def284478bec7e5a92da3cf977c52"
+version = "0.16.4-alpha.0"
+source = "git+https://github.com/gyscos/cursive?branch=main#b050b125a9b2883850d04da2f3290f3af865bd46"
 dependencies = [
- "ahash",
+ "ahash 0.6.3",
  "cfg-if 1.0.0",
  "crossbeam-channel",
  "crossterm",
@@ -194,36 +204,32 @@ dependencies = [
  "signal-hook 0.3.7",
  "unicode-segmentation",
  "unicode-width",
- "wasmer_enumset",
 ]
 
 [[package]]
 name = "cursive_core"
 version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "025ac0bcd21ced752d27b70e6aa2285a3513d07b5a0c7f89e71121d20ca1429d"
+source = "git+https://github.com/gyscos/cursive?branch=main#b050b125a9b2883850d04da2f3290f3af865bd46"
 dependencies = [
- "ahash",
+ "ahash 0.7.2",
  "chrono",
  "crossbeam-channel",
  "enum-map",
+ "enumset",
  "lazy_static",
- "libc",
  "log",
  "num",
  "owning_ref",
- "syn",
  "unicode-segmentation",
  "unicode-width",
- "wasmer_enumset",
  "xi-unicode",
 ]
 
 [[package]]
 name = "darling"
-version = "0.10.2"
+version = "0.12.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0d706e75d87e35569db781a9b5e2416cff1236a47ed380831f959382ccd5f858"
+checksum = "a06d4a9551359071d1890820e3571252b91229e0712e7c36b08940e603c5a8fc"
 dependencies = [
  "darling_core",
  "darling_macro",
@@ -231,23 +237,23 @@ dependencies = [
 
 [[package]]
 name = "darling_core"
-version = "0.10.2"
+version = "0.12.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f0c960ae2da4de88a91b2d920c2a7233b400bc33cb28453a2987822d8392519b"
+checksum = "b443e5fb0ddd56e0c9bfa47dc060c5306ee500cb731f2b91432dd65589a77684"
 dependencies = [
  "fnv",
  "ident_case",
  "proc-macro2",
  "quote",
- "strsim 0.9.3",
+ "strsim 0.10.0",
  "syn",
 ]
 
 [[package]]
 name = "darling_macro"
-version = "0.10.2"
+version = "0.12.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d9b5a2f4ac4969822c62224815d069952656cadc7084fdca9751e6d959189b72"
+checksum = "c0220073ce504f12a70efc4e7cdaea9e9b1b324872e7ad96a208056d7a638b81"
 dependencies = [
  "darling_core",
  "quote",
@@ -276,6 +282,27 @@ version = "0.4.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e5c450cf304c9e18d45db562025a14fb1ca0f5c769b6f609309f81d4c31de455"
 dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "enumset"
+version = "1.0.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fbd795df6708a599abf1ee10eacc72efd052b7a5f70fdf0715e4d5151a6db9c3"
+dependencies = [
+ "enumset_derive",
+]
+
+[[package]]
+name = "enumset_derive"
+version = "0.5.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e19c52f9ec503c8a68dc04daf71a04b07e690c32ab1a8b68e33897f255269d47"
+dependencies = [
+ "darling",
  "proc-macro2",
  "quote",
  "syn",
@@ -686,9 +713,9 @@ checksum = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
 
 [[package]]
 name = "strsim"
-version = "0.9.3"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6446ced80d6c486436db5c078dde11a9f73d42b57fb273121e160b84f63d894c"
+checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
 
 [[package]]
 name = "structopt"
@@ -833,28 +860,6 @@ name = "wasi"
 version = "0.10.2+wasi-snapshot-preview1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fd6fbd9a79829dd1ad0cc20627bf1ed606756a7f77edff7b66b7064f9cb327c6"
-
-[[package]]
-name = "wasmer_enumset"
-version = "1.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf088cc1f7d247fd96dff0df46fb1bbb747d8a69ae1ecd71aed55c55e354b2d8"
-dependencies = [
- "num-traits",
- "wasmer_enumset_derive",
-]
-
-[[package]]
-name = "wasmer_enumset_derive"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a8d1b32d98e11194200baf6d3f85eb2d6cfe56f6d9af0dd617f90ca48f958a88"
-dependencies = [
- "darling",
- "proc-macro2",
- "quote",
- "syn",
-]
 
 [[package]]
 name = "winapi"
