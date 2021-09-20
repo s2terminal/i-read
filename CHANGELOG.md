@@ -1,7 +1,7 @@
 # Change Log
 
 ## Unreleased
-- none
+- loop select list
 
 ## 0.0.9 / 2021-03-13
 - use `Cursive`
