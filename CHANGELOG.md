@@ -1,6 +1,9 @@
 # Change Log
 
 ## Unreleased
+- none
+
+## 0.2.0 / 2021-09-20
 - loop select list
 
 ## 0.0.9 / 2021-03-13
