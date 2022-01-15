@@ -5,7 +5,7 @@ Supported on Linux and Windows Subsystems for Linux.
 
 ## Install
 ```bash
-$ curl --silent https://raw.githubusercontent.com/s2terminal/i-read/master/install.sh | sudo /bin/sh
+$ curl --silent https://raw.githubusercontent.com/s2terminal/i-read/main/install.sh | sudo /bin/sh
 ```
 
 or [get binary](https://github.com/s2terminal/i-read/releases).
