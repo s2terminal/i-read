@@ -43,5 +43,10 @@ You can use also [Docker](https://www.docker.com/) and [VS Code Remote Container
 $ cargo check
 ```
 
+### Check outdated dependencies
+```bash
+$ cargo outdated --depth 1
+```
+
 ## License
 [MIT](LICENSE).
