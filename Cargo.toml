@@ -2,7 +2,7 @@
 name = "i-read"
 version = "0.2.0"
 authors = ["s2terminal <suzuki.sh@s2terminal.com>"]
-edition = "2018"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
