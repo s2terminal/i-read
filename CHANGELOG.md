@@ -1,7 +1,7 @@
 # Change Log
 
 ## Unreleased
-- none
+- update dependencies
 
 ## 0.2.0 / 2021-09-20
 - loop select list
