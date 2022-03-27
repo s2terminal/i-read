@@ -15,6 +15,13 @@ or [get binary](https://github.com/s2terminal/i-read/releases).
 $ rm --interactive /usr/local/bin/iread
 ```
 
+### ARM Support (Experimental)
+```bash
+$ rustup target add `uname --machine`-unknown-linux-musl
+$ cargo build --release --target `uname --machine`-unknown-linux-musl
+$ sudo mv ./target/`uname --machine`-unknown-linux-musl/release/i-read /usr/local/bin/iread
+```
+
 ## Usage
 ```bash
 $ iread

@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y \
     build-essential \
  && rm -rf /var/lib/apt/lists/*
 
-RUN rustup target add x86_64-unknown-linux-musl
+RUN rustup target add `uname --machine`-unknown-linux-musl
 
 COPY ./ ./
-RUN cargo build
+RUN cargo build --target `uname --machine`-unknown-linux-musl
 
 # add developing tools
 RUN cargo install cargo-outdated
