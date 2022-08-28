@@ -22,6 +22,12 @@ $ cargo build --release --target `uname --machine`-unknown-linux-musl
 $ sudo mv ./target/`uname --machine`-unknown-linux-musl/release/i-read /usr/local/bin/iread
 ```
 
+### Windows (Experimental)
+```bash
+$ rustup target add `uname --machine`-pc-windows-gnu
+$ cargo build --release --target `uname --machine`-pc-windows-gnu
+```
+
 ## Usage
 ```bash
 $ iread

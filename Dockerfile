@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libssl-dev \
     pkg-config \
+    mingw-w64 \
     build-essential \
  && rm -rf /var/lib/apt/lists/*
 
