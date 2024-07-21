@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
  && rm -rf /var/lib/apt/lists/*
 
+RUN git config --global --add safe.directory /app
+
 # add developing tools
 RUN cargo install --version ^0.15.0 cargo-outdated
 
