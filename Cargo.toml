@@ -7,13 +7,13 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-structopt = "0.3.25"
-regex = "1.5.4"
+structopt = "0.3.26"
+regex = "1.10.5"
 pulldown-cmark = "0.8.0"
-ctrlc = "3.2.1"
-console = "0.15.0"
+ctrlc = "3.4.4"
+console = "0.15.8"
 
 [dependencies.cursive]
-version = "0.17.0"
+version = "0.20.0"
 default-features = false
 features = ["crossterm-backend"]
