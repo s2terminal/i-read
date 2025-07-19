@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 RUN git config --global --add safe.directory /app
 
 # add developing tools
-RUN cargo install --version ^0.15.0 cargo-outdated
+# RUN cargo install --version ^0.15.0 cargo-outdated
 
 # cargo build setup
 RUN rustup target add `uname --machine`-unknown-linux-musl
