@@ -39,7 +39,7 @@ impl Command {
             match event {
                 Event::Start(Tag::Heading { level, .. }) => {
                     heading_level = Self::heading_level_to_u32(level);
-                },
+                }
                 Event::End(pulldown_cmark::TagEnd::Heading(_)) => heading_level = 0,
                 Event::Start(Tag::CodeBlock(_)) => is_code = true,
                 Event::End(pulldown_cmark::TagEnd::CodeBlock) => is_code = false,
@@ -304,16 +304,34 @@ second line
             raw_string: "echo hello".to_string(),
             executable: true,
         };
-        assert_eq!(format!("{}", command), "echo hello");
+        assert_eq!(format!("{command}"), "echo hello");
     }
 
     #[test]
     fn test_heading_level_to_u32() {
-        assert_eq!(Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H1), 1);
-        assert_eq!(Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H2), 2);
-        assert_eq!(Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H3), 3);
-        assert_eq!(Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H4), 4);
-        assert_eq!(Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H5), 5);
-        assert_eq!(Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H6), 6);
+        assert_eq!(
+            Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H1),
+            1
+        );
+        assert_eq!(
+            Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H2),
+            2
+        );
+        assert_eq!(
+            Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H3),
+            3
+        );
+        assert_eq!(
+            Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H4),
+            4
+        );
+        assert_eq!(
+            Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H5),
+            5
+        );
+        assert_eq!(
+            Command::heading_level_to_u32(pulldown_cmark::HeadingLevel::H6),
+            6
+        );
     }
 }
