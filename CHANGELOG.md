@@ -3,6 +3,11 @@
 ## Unreleased
 - update dependencies
 
+## 0.2.1 / 2025-07-20
+- updated Rust and dependencies
+- add tests
+- experimental ARM Support
+
 ## 0.2.0 / 2021-09-20
 - loop select list
 
