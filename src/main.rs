@@ -2,10 +2,10 @@ mod args;
 mod cmds;
 mod exec;
 
+use cursive::Cursive;
 use cursive::theme::{BaseColor, Color, PaletteColor, Theme};
 use cursive::traits::*;
 use cursive::views::{CircularFocus, Dialog, SelectView};
-use cursive::Cursive;
 
 fn main() {
     let content = args::get_content();
@@ -37,7 +37,7 @@ fn select_and_exec_command(commands: Vec<cmds::Command>) {
     siv.run();
 
     let take_command: cmds::Command = siv.take_user_data().unwrap();
-    println!("execute command: {}", take_command);
+    println!("execute command: {take_command}");
     exec::execute(&take_command.executable());
 }
 

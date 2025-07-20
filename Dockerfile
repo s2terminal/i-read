@@ -1,4 +1,4 @@
-FROM rust:1.79-slim
+FROM rust:1.88-slim
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
