@@ -5,6 +5,7 @@ use std::fmt;
 #[derive(Debug, Clone)]
 pub struct Command {
     raw_string: String,
+    #[allow(dead_code)]
     executable: bool
 }
 
@@ -40,7 +41,7 @@ impl Command {
                     } else if heading_level > 0 {
                         for line in text.lines() {
                             commands.push(Command {
-                                raw_string: String::from(format!("{} {}", "#".repeat(heading_level as usize), line)),
+                                raw_string: format!("{} {}", "#".repeat(heading_level as usize), line),
                                 executable: false
                             });
                         }
@@ -60,6 +61,7 @@ impl fmt::Display for Command {
 }
 
 #[cfg(test)]
+#[allow(clippy::bool_assert_comparison)]
 mod tests {
     use super::*;
 

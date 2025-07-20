@@ -13,6 +13,7 @@ RUN git config --global --add safe.directory /app
 
 # add developing tools
 # RUN cargo install --version ^0.15.0 cargo-outdated
+RUN rustup component add rustfmt clippy
 
 # cargo build setup
 RUN rustup target add `uname --machine`-unknown-linux-musl

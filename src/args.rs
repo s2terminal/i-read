@@ -9,6 +9,6 @@ struct Cli {
 pub fn get_content() -> String {
     let args = Cli::from_args();
 
-    std::fs::read_to_string(&args.filename)
+    std::fs::read_to_string(args.filename)
         .expect("No such file or directory")
 }
