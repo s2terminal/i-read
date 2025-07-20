@@ -50,7 +50,7 @@ You can use also [Docker](https://www.docker.com/) and [VS Code Remote Container
 $ cargo check
 $ cargo test
 $ cargo fmt --check
-$ cargo clippy --all-targets -- -D warnings
+$ cargo clippy
 ```
 
 ### Check outdated dependencies

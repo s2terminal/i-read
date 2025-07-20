@@ -2,9 +2,9 @@ mod args;
 mod cmds;
 mod exec;
 
+use cursive::theme::{BaseColor, Color, PaletteColor, Theme};
 use cursive::traits::*;
-use cursive::views::{Dialog, SelectView,CircularFocus};
-use cursive::theme::{Color, PaletteColor, Theme, BaseColor};
+use cursive::views::{CircularFocus, Dialog, SelectView};
 use cursive::Cursive;
 
 fn main() {
@@ -30,11 +30,8 @@ fn select_and_exec_command(commands: Vec<cmds::Command>) {
     siv.set_theme(theme);
 
     siv.add_layer(
-        CircularFocus::new(
-            Dialog::around(
-                select.scrollable()
-            ).title("choice command")
-        ).wrap_arrows(),
+        CircularFocus::new(Dialog::around(select.scrollable()).title("choice command"))
+            .wrap_arrows(),
     );
 
     siv.run();

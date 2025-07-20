@@ -1,4 +1,4 @@
-use pulldown_cmark::{Parser, Tag, Options, Event};
+use pulldown_cmark::{Event, Options, Parser, Tag};
 use regex::Regex;
 use std::fmt;
 
@@ -6,7 +6,7 @@ use std::fmt;
 pub struct Command {
     raw_string: String,
     #[allow(dead_code)]
-    executable: bool
+    executable: bool,
 }
 
 impl Command {
@@ -27,27 +27,31 @@ impl Command {
         for event in parser {
             match event {
                 Event::Start(Tag::Heading(level)) => heading_level = level,
-                Event::End(Tag::Heading(_))   => heading_level = 0,
+                Event::End(Tag::Heading(_)) => heading_level = 0,
                 Event::Start(Tag::CodeBlock(_)) => is_code = true,
-                Event::End(Tag::CodeBlock(_))   => is_code = false,
+                Event::End(Tag::CodeBlock(_)) => is_code = false,
                 Event::Text(text) => {
                     if is_code {
                         for line in text.lines() {
                             commands.push(Command {
                                 raw_string: String::from(line),
-                                executable: true
+                                executable: true,
                             });
                         }
                     } else if heading_level > 0 {
                         for line in text.lines() {
                             commands.push(Command {
-                                raw_string: format!("{} {}", "#".repeat(heading_level as usize), line),
-                                executable: false
+                                raw_string: format!(
+                                    "{} {}",
+                                    "#".repeat(heading_level as usize),
+                                    line
+                                ),
+                                executable: false,
                             });
                         }
                     }
-                },
-                _ => ()
+                }
+                _ => (),
             }
         }
         commands
@@ -80,7 +84,8 @@ echo "Hello World"
 ls -la
 cd /home
 ```
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
         assert_eq!(commands.len(), 3);
@@ -101,7 +106,8 @@ cd /home
 # Main Title
 ## Subtitle
 ### Sub-subtitle
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
         assert_eq!(commands.len(), 3);
@@ -140,7 +146,8 @@ source ~/.bashrc
 ### Additional Notes
 
 Some final notes here.
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
         assert_eq!(commands.len(), 7);
@@ -177,7 +184,8 @@ Some final notes here.
         let content = r#"
 ```bash
 ```
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
         assert!(commands.is_empty());
@@ -191,7 +199,8 @@ echo "first"
 
 echo "second"
 ```
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
         assert_eq!(commands.len(), 3);
@@ -218,7 +227,8 @@ Some text here.
 ```python
 print("hello")
 ```
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
         assert_eq!(commands.len(), 2);
@@ -235,7 +245,8 @@ print("hello")
         let content = r#"
 # First line
 second line
-"#.to_string();
+"#
+        .to_string();
 
         let commands = Command::get_commands(content);
 
