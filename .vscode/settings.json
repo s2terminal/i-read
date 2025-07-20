@@ -1,0 +1,10 @@
+{
+  "github.copilot.chat.agent.terminal.allowList": {
+    "cargo check": true,
+    "cargo test": true,
+    "cargo fmt --check": true,
+    "cargo clippy": true,
+    "cargo build": true,
+    "cargo build --release": true,
+  },
+}

@@ -37,7 +37,7 @@ fn select_and_exec_command(commands: Vec<cmds::Command>) {
     siv.run();
 
     let take_command: cmds::Command = siv.take_user_data().unwrap();
-    println!("execute command: {}", take_command);
+    println!("execute command: {take_command}");
     exec::execute(&take_command.executable());
 }
 
