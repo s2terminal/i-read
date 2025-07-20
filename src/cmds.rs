@@ -26,10 +26,10 @@ impl Command {
         let mut heading_level: u32 = 0;
         for event in parser {
             match event {
-                Event::Start(Tag::Heading(level)) => heading_level = level,
-                Event::End(Tag::Heading(_)) => heading_level = 0,
+                Event::Start(Tag::Heading { level, .. }) => heading_level = level as u32,
+                Event::End(pulldown_cmark::TagEnd::Heading(_)) => heading_level = 0,
                 Event::Start(Tag::CodeBlock(_)) => is_code = true,
-                Event::End(Tag::CodeBlock(_)) => is_code = false,
+                Event::End(pulldown_cmark::TagEnd::CodeBlock) => is_code = false,
                 Event::Text(text) => {
                     if is_code {
                         for line in text.lines() {
