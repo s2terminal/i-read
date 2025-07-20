@@ -250,8 +250,8 @@ second line
 
         let commands = Command::get_commands(content);
 
-        // 実際のMarkdownパーサーの動作に基づいて期待値を調整
-        // 見出しは1行のみで、その後のテキストは通常のテキストとして扱われる
+        // Adjust the expected values based on the actual behavior of the Markdown parser
+        // Headings are treated as single lines, and subsequent text is treated as regular text
         assert_eq!(commands.len(), 1);
 
         assert_eq!(commands[0].raw_string, "# First line");
